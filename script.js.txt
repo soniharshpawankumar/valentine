@@ -1,0 +1,60 @@
+const yesBtn = document.getElementById('yesBtn');
+const noBtn = document.getElementById('noBtn');
+const mainContent = document.getElementById('main-content');
+const successMessage = document.getElementById('success-message');
+const heartsContainer = document.getElementById('hearts-container');
+
+// Function to move the "No" button randomly
+function moveNoButton() {
+    // Get the current dimensions of the browser window
+    const maxWidth = window.innerWidth - noBtn.offsetWidth;
+    const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+    // Calculate random positions
+    const randomX = Math.floor(Math.random() * maxWidth);
+    const randomY = Math.floor(Math.random() * maxHeight);
+
+    // Apply the new positions. We use 'fixed' position to ensure it moves relative to the screen.
+    noBtn.style.position = 'fixed'; 
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+}
+
+// Event listener for when the mouse hovers over the "No" button
+noBtn.addEventListener('mouseover', moveNoButton);
+// Adding "click" just in case she's fast on a phone!
+noBtn.addEventListener('click', moveNoButton); 
+
+
+// Event listener for when the "Yes" button is clicked
+yesBtn.addEventListener('click', () => {
+    // Hide the question and buttons
+    mainContent.style.display = 'none';
+    // Show the success message
+    successMessage.style.display = 'block';
+    
+    // Start floating hearts
+    heartsContainer.style.display = 'block';
+    createHearts();
+});
+
+
+// Function to create floating hearts effect
+function createHearts() {
+    setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random speed between 3-5s
+        heart.style.fontSize = Math.random() * 20 + 20 + 'px'; // Random size
+        
+        heartsContainer.appendChild(heart);
+
+        // Remove hearts after they float off screen to keep the site running smoothly
+        setTimeout(() => {
+            heart.remove();
+        }, 5000);
+
+    }, 300); // Create a new heart every 300ms
+}
