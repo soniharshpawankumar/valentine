@@ -25,9 +25,19 @@ yesBtn.addEventListener('click', () => {
     createHearts();
 });
 
-// THIS IS THE UPDATED PART
+// UPDATED FUNCTION: Sends WhatsApp Message
 function selectTrip(location) {
+    // 1. Show the sweet alert
     alert("Pack your bags for " + location + "! I am waiting downside your PG right now! ❤️🚗");
+    
+    // 2. Prepare the WhatsApp message
+    // 91 is the country code for India, followed by your number
+    const phoneNumber = "917249249700"; 
+    const message = "I choose " + location + "! I'm coming down now ❤️";
+    
+    // 3. Open WhatsApp instantly
+    const whatsappUrl = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(message);
+    window.open(whatsappUrl, '_blank');
 }
 
 function createHearts() {
