@@ -4,22 +4,23 @@ body {
     box-sizing: border-box;
     font-family: 'Nunito', sans-serif;
     background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
-    background-color: #ffe6e6; /* Fallback pink */
+    background-color: #ffe6e6;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh; /* Changed to min-height for scrolling if needed */
+    overflow-x: hidden; /* Only hide horizontal overflow */
     text-align: center;
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
     padding: 40px;
     border-radius: 20px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     position: relative;
     z-index: 10;
+    max-width: 90%; /* Responsive width */
 }
 
 h1 {
@@ -31,6 +32,7 @@ h2 {
     color: #ff4d6d;
     font-weight: 700;
     font-size: 2.5em;
+    margin-top: 10px;
 }
 
 .cute-image {
@@ -45,8 +47,8 @@ h2 {
     gap: 20px;
     justify-content: center;
     margin-top: 30px;
-    position: relative; /* Important for the No button positioning */
-    height: 60px; /* Give space for buttons */
+    position: relative;
+    height: 60px;
 }
 
 button {
@@ -73,7 +75,7 @@ button {
 #noBtn {
     background-color: #e0e0e0;
     color: #333;
-    position: absolute; /* Allows us to move it freely */
+    position: absolute;
 }
 
 .shy-text {
@@ -82,7 +84,37 @@ button {
     margin-top: 20px;
 }
 
-/* Success Message Styling */
+.pick-date {
+    color: #333;
+    font-size: 1.2em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* New Trip Option Styles */
+.trip-options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    align-items: center;
+}
+
+.trip-btn {
+    background-color: white;
+    color: #ff4d6d;
+    border: 2px solid #ff4d6d;
+    font-weight: bold;
+    width: 100%;
+    max-width: 300px;
+}
+
+.trip-btn:hover {
+    background-color: #ff4d6d;
+    color: white;
+    transform: scale(1.05);
+}
+
 .success-message h1 {
     font-size: 3em;
     margin: 0;
@@ -97,7 +129,6 @@ button {
     100% { transform: scale(1); }
 }
 
-/* Floating Hearts Animation */
 .hearts-container {
     position: absolute;
     top: 0;
@@ -107,7 +138,7 @@ button {
     pointer-events: none;
     z-index: 1;
     overflow: hidden;
-    display: none; /* Hidden initially */
+    display: none;
 }
 
 .heart {
