@@ -25,9 +25,9 @@ yesBtn.addEventListener('click', () => {
     createHearts();
 });
 
-// New function to handle trip selection
+// THIS IS THE UPDATED PART
 function selectTrip(location) {
-    alert("Yay! I can't wait to go to " + location + " with you! ❤️");
+    alert("Pack your bags for " + location + "! I am waiting downside your PG right now! ❤️🚗");
 }
 
 function createHearts() {
